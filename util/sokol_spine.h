@@ -4086,7 +4086,7 @@ static sspine_resource_state _sspine_init_instance(_sspine_instance_t* instance,
     spSkeleton_setToSetupPose(instance->sp_skel);
     spAnimationState_update(instance->sp_anim_state, 0.0f);
     spAnimationState_apply(instance->sp_anim_state, instance->sp_skel);
-    spSkeleton_updateWorldTransform(instance->sp_skel);
+    spSkeleton_updateWorldTransform(instance->sp_skel, SP_PHYSICS_NONE);
 
     return SSPINE_RESOURCESTATE_VALID;
 }
@@ -4861,7 +4861,7 @@ SOKOL_API_IMPL void sspine_update_instance(sspine_instance instance_id, float de
         _sspine_rewind_triggered_events(instance);
         spAnimationState_update(instance->sp_anim_state, delta_time);
         spAnimationState_apply(instance->sp_anim_state, instance->sp_skel);
-        spSkeleton_updateWorldTransform(instance->sp_skel);
+        spSkeleton_updateWorldTransform(instance->sp_skel, SP_PHYSICS_NONE);
     }
 }
 
